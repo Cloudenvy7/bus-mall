@@ -61,7 +61,7 @@ function displayingRandomImg() {
     var thirdImgIndex =  2;
     console.log(firstIndex, secondImgIndex, thirdImgIndex);
     var whileloop = 0 ;
-    whileloop = whileloop++;
+    whileloop++;
     console.log(whileloop);
 
   // the loop makes sure to generate new random numbers for each index until each number is different
@@ -125,14 +125,3 @@ img3.addEventListener('click', function() {
   console.log(productThree.imgPath);
   displayingRandomImg();
 });
-
-var whileloop = 0 ;
-
-function whileThisShit(){
-  for (var i = 0; i < 5; i++){
-    whileloop++;
-    console.log(whileloop);
-  }
-}
-
-whileThisShit();
