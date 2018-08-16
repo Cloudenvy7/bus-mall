@@ -9,6 +9,9 @@ function Product(name , imgPath) {
   this.imgPath = imgPath;
   // (this) refers appends the vote property to object intiated with Product
   this.votes = 0;
+
+  // (this) refers appends the number of times this object has been displayed to the DOM 
+  this.display = 0;
   //????the action push takes (the object) and places in at the end of imageArray within the Product
   Product.imageArray.push(this);
 }
@@ -44,6 +47,7 @@ new Product ('wine-glass','img/assets/wine-glass.jpg');
 
 function displayingRandomImg() {
 
+  
   var firstIndex = Math.floor(Math.random() * Product.imageArray.length);
   //this line creates a new var that has the [index number] of image array within the Product
   productOne = Product.imageArray[firstIndex];
@@ -56,26 +60,36 @@ function displayingRandomImg() {
   } while (firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
   // sett the new 
 
-
   productTwo = Product.imageArray[secondImgIndex];
   productThree = Product.imageArray[thirdImgIndex];
 
-
-  //need to store in img.src --> for all the 
   img1.src = productOne.imgPath;
   img2.src = productTwo.imgPath;
   img3.src = productThree.imgPath;
+  console.log('this ran good');
 }
 
-// do {
-//   //create a var that holds the index location of the 2nd product img
-//   var thirdImgindex =  Math.floor(Math.random() * Product.imageArray.length);
-// } while (thirdImgIndex === firstIndex || thirdImgindex === secondImgIndex)
-// productThree = Product.imageArray[thirdImgindex];
+
+//need a function that makes sure there are no duplicates. this needs to take in the old imgs and compare them against the newm images ---> this can be done by giving the html location id tags
 
 var img1 = document.getElementsByTagName('img')[0];
 var img2 = document.getElementsByTagName('img')[1];
 var img3 = document.getElementsByTagName('img')[2];
+
+//creating a loop that interates 3 times and compares the current imgs to the previous ones  
+// function test() {
+//   for(var i = 0; i > 3; i++ ){
+//     if (document.getElementsByTagName('img')[i] === productOne.imgPath) {
+//     //displayingRandomImg();
+//       console.log('this is working');
+//     }
+//   }
+// }
+
+//   while(firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
+// }
+
+
 
 img1.addEventListener('click', function() {
   productOne.votes++;
