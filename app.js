@@ -66,7 +66,10 @@ function displayingRandomImg() {
   img1.src = productOne.imgPath;
   img2.src = productTwo.imgPath;
   img3.src = productThree.imgPath;
+ 
   console.log('this ran good');
+  test();
+
 }
 
 
@@ -76,18 +79,19 @@ var img1 = document.getElementsByTagName('img')[0];
 var img2 = document.getElementsByTagName('img')[1];
 var img3 = document.getElementsByTagName('img')[2];
 
-//creating a loop that interates 3 times and compares the current imgs to the previous ones  
-// function test() {
-//   for(var i = 0; i > 3; i++ ){
-//     if (document.getElementsByTagName('img')[i] === productOne.imgPath) {
-//     //displayingRandomImg();
-//       console.log('this is working');
-//     }
-//   }
-// }
-
 //   while(firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
 // }
+
+
+// creating a loop that interates 3 times and compares the current imgs to the previous ones  
+function test() {
+  for(var i = 0; i < 3; i++ ){
+    if (document.getElementsByTagName('img')[i] !== productOne.imgPath) {
+    //displayingRandomImg();
+      console.log('this is working');
+    }
+  }
+}
 
 
 
