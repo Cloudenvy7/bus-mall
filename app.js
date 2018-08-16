@@ -1,7 +1,6 @@
 'user strict';
 // starting from the begining agian
 
-
 function Product(name , imgPath) {
   // (this) refers to the object name that is intiated with Product
   this.name = name;
@@ -20,9 +19,9 @@ Product.imageArray = [];
 
 //these line below intialize new Products, which (populates) the objects with the
 //cont... properties of the Product Constructor function above
-var productOne = new Product('bag' ,'img/assets/bag.jpg');
-var productTwo = new Product ('banana','img/assets/banana.jpg');
-var productThree = new Product ('bathroom','img/assets/bathroom.jpg');
+new Product('bag' ,'img/assets/bag.jpg');
+new Product ('banana','img/assets/banana.jpg');
+new Product ('bathroom','img/assets/bathroom.jpg');
 new Product ('boots','img/assets/boots.jpg');
 new Product ('breakfast','img/assets/breakfast.jpg');
 new Product ('bubblegum','img/assets/bubblegum.jpg');
@@ -37,9 +36,14 @@ new Product ('shark','img/assets/shark.jpg');
 new Product ('sweep','img/assets/sweep.png');
 new Product ('tauntaun','img/assets/tauntaun.jpg');
 new Product ('usb','img/assets/usb.gif');
-new Product ('usb','img/assets/usb.gif');
 new Product ('water-can','img/assets/water-can.jpg');
 new Product ('wine-glass','img/assets/wine-glass.jpg');
+
+
+//this setts the new variables with the index that hold the img objects
+var productOne = Product.imageArray[0];
+var productTwo = Product.imageArray[1];
+var productThree = Product.imageArray[2];
 
 //this function is created to make sure the random pictures are created
 //cont.. and that the next pictures selected are not the same as the previous
@@ -50,38 +54,76 @@ function generateRandomNumber(){
 }
 
 
-
+//puttting the unique random index numbers into an array
+var pastIndex = [];
 
 function displayingRandomImg() {
-
+  
   do{
     //the variables below are taking in random generated numbers
-    var firstIndex = generateRandomNumber();
-    var secondImgIndex =  generateRandomNumber();
-    var thirdImgIndex =  2;
-    console.log(firstIndex, secondImgIndex, thirdImgIndex);
-    var whileloop = 0 ;
-    whileloop++;
-    console.log(whileloop);
-
+    firstIndex = generateRandomNumber();
+    secondImgIndex = generateRandomNumber();
+    thirdImgIndex = generateRandomNumber();
+    // console.log(newIndex);
+    
+    //tested the while loop with this console.log
   // the loop makes sure to generate new random numbers for each index until each number is different
-  } while (firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
-
-  // // now tha
-  // for(var i = )
-  // productOne = Product.imageArray[firstIndex];
-  // productTwo = Product.imageArray[secondImgIndex];
-  // productThree = Product.imageArray[thirdImgIndex];
-
-  // img1.src = productOne.imgPath;
-  // img2.src = productTwo.imgPath;
-  // img3.src = productThree.imgPath;
+  } while (
+    firstIndex === secondImgIndex || 
+    firstIndex === thirdImgIndex || 
+    secondImgIndex === thirdImgIndex ||
+    pastIndex.includes(firstIndex) ||
+    pastIndex.includes(secondImgIndex) ||
+    pastIndex.includes(thirdImgIndex)
+  );
+  //this is taking in the index numbers that have past through and are next to be displayed. when it r
+  pastIndex = [firstIndex,secondImgIndex,thirdImgIndex]; 
+  // this takes the unique random index array location
+  // and runs it through the comparsion function
+  //has to take in the 
+ 
+  // oldAndNewComparision(newIndex[0]);
+  // oldAndNewComparision(newIndex[1]);
+  // oldAndNewComparision(newIndex[2]);
+  
+  //assigns the generated numbers into the Product variables
+  productOne = Product.imageArray[firstIndex];
+  productTwo = Product.imageArray[secondImgIndex];
+  productThree = Product.imageArray[thirdImgIndex];
+  
+  // this takes the checked img paths and applies them to the img src -- on the dom.
+  img1.src = productOne.imgPath;
+  console.log(img1.src);
+  img2.src = productTwo.imgPath;
+  console.log(img2.src);
+  img3.src = productThree.imgPath;
+  console.log(img3.src);
 
   console.log('this ran good');
   // test();
-
 }
 
+// function oldAndNewComparision(indexToCompare) {
+//   for (var i = 0; i < 3 ; i++ ) {
+//     var tempindex = indexToCompare;
+//     if (tempindex === productOne.imgPath){
+//       tempindex = generateRandomNumber();
+//       console.log(tempindex);
+//     } else if (tempindex === productTwo.imgPath) {
+//       tempindex = generateRandomNumber();
+//     } else if (tempindex === productThree.imgPath) {
+//       tempindex = generateRandomNumber();
+//     } else {
+//       console.log(tempindex);
+//     }
+//   }
+// }
+
+
+// decalaring the index variables that will used to compare index files and then the product locations
+var firstIndex = 0;
+var secondImgIndex =  0;
+var thirdImgIndex =  0;
 
 //need a function that makes sure there are no duplicates. this needs to take in the old imgs and compare them against the newm images ---> this can be done by giving the html location id tags
 
@@ -125,3 +167,4 @@ img3.addEventListener('click', function() {
   console.log(productThree.imgPath);
   displayingRandomImg();
 });
+
