@@ -2,9 +2,11 @@
 // starting from the begining agian
 
 
-function Product(filename) {
+function Product(name , imgPath) {
   // (this) refers to the object name that is intiated with Product
-  this.filename = filename;
+  this.name = name;
+
+  this.imgPath = imgPath;
   // (this) refers appends the vote property to object intiated with Product
   this.votes = 0;
   //????the action push takes (the object) and places in at the end of imageArray within the Product
@@ -15,26 +17,26 @@ Product.imageArray = [];
 
 //these line below intialize new Products, which (populates) the objects with the 
 //cont... properties of the Product Constructor function above
-var productOne = new Product('img/assets/bag.jpg');
-var productTwo = new Product ('img/assets/banana.jpg');
-var productThree = new Product ('img/assets/bathroom.jpg');
-new Product ('img/assets/boots.jpg');
-new Product ('img/assets/breakfast.jpg');
-new Product ('img/assets/bubblegum.jpg');
-new Product ('img/assets/chair.jpg');
-new Product ('img/assets/cthulhu.jpg');
-new Product ('img/assets/dog-duck.jpg');
-new Product ('img/assets/dragon.jpg');
-new Product ('img/assets/pen.jpg');
-new Product ('img/assets/pet-sweep.jpg');
-new Product ('img/assets/scissors.jpg');
-new Product ('img/assets/shark.jpg');
-new Product ('img/assets/sweep.png');
-new Product ('img/assets/tauntaun.jpg');
-new Product ('img/assets/usb.gif');
-new Product ('img/assets/usb.gif');
-new Product ('img/assets/water-can.jpg');
-new Product ('img/assets/wine-glass.jpg');
+var productOne = new Product('bag' ,'img/assets/bag.jpg');
+var productTwo = new Product ('banana','img/assets/banana.jpg');
+var productThree = new Product ('bathroom','img/assets/bathroom.jpg');
+new Product ('boots','img/assets/boots.jpg');
+new Product ('breakfast','img/assets/breakfast.jpg');
+new Product ('bubblegum','img/assets/bubblegum.jpg');
+new Product ('chair','img/assets/chair.jpg');
+new Product ('cthulhu','img/assets/cthulhu.jpg');
+new Product ('dog-duck','img/assets/dog-duck.jpg');
+new Product ('dragon','img/assets/dragon.jpg');
+new Product ('pen','img/assets/pen.jpg');
+new Product ('pet-sweep','img/assets/pet-sweep.jpg');
+new Product ('scissors','img/assets/scissors.jpg');
+new Product ('shark','img/assets/shark.jpg');
+new Product ('sweep','img/assets/sweep.png');
+new Product ('tauntaun','img/assets/tauntaun.jpg');
+new Product ('usb','img/assets/usb.gif');
+new Product ('usb','img/assets/usb.gif');
+new Product ('water-can','img/assets/water-can.jpg');
+new Product ('wine-glass','img/assets/wine-glass.jpg');
 
 //this function is created to make sure the random pictures are created
 //cont.. and that the next pictures selected are not the same as the previous
@@ -60,9 +62,9 @@ function displayingRandomImg() {
 
 
   //need to store in img.src --> for all the 
-  img1.src = productOne.filename;
-  img2.src = productTwo.filename;
-  img3.src = productThree.filename;
+  img1.src = productOne.imgPath;
+  img2.src = productTwo.imgPath;
+  img3.src = productThree.imgPath;
 }
 
 // do {
@@ -78,16 +80,20 @@ var img3 = document.getElementsByTagName('img')[2];
 img1.addEventListener('click', function() {
   productOne.votes++;
   console.log(productOne.votes);
-  console.log(productOne.filename);
+  console.log(productOne.imgPath);
   displayingRandomImg();
 });
 
 img2.addEventListener('click', function() {
   productTwo.votes++;
+  console.log(productTwo.votes);
+  console.log(productTwo.imgPath);
   displayingRandomImg();
 });
 
 img3.addEventListener('click', function() {
   productThree.votes++;
+  console.log(productThree.votes);
+  console.log(productThree.imgPath);
   displayingRandomImg();
 });
