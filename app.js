@@ -44,18 +44,23 @@ new Product ('wine-glass','img/assets/wine-glass.jpg');
 //this function is created to make sure the random pictures are created
 //cont.. and that the next pictures selected are not the same as the previous
 //cont... or the same as each other
+function generateRandomNumber(){
+  var randIndex = Math.floor(Math.random() * Product.imageArray.length);
+  return randIndex;
+} 
+
+var firstIndex = generateRandomNumber();
+var secondImgIndex =  generateRandomNumber();
+var thirdImgIndex =  generateRandomNumber();
+ 
 
 function displayingRandomImg() {
-
-  
-  var firstIndex = Math.floor(Math.random() * Product.imageArray.length);
   //this line creates a new var that has the [index number] of image array within the Product
   productOne = Product.imageArray[firstIndex];
   // do a test
   do {
     //create a var that holds the index location of the 2nd product img
-    var secondImgIndex =  Math.floor(Math.random() * Product.imageArray.length);
-    var thirdImgIndex =  Math.floor(Math.random() * Product.imageArray.length);
+    
     // while the first index and second index are the same continue do-ing wthe line above
   } while (firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
   // sett the new 
