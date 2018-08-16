@@ -10,7 +10,7 @@ function Product(name , imgPath) {
   // (this) refers appends the vote property to object intiated with Product
   this.votes = 0;
 
-  // (this) refers appends the number of times this object has been displayed to the DOM 
+  // (this) refers appends the number of times this object has been displayed to the DOM
   this.display = 0;
   //????the action push takes (the object) and places in at the end of imageArray within the Product
   Product.imageArray.push(this);
@@ -18,7 +18,7 @@ function Product(name , imgPath) {
 // this is decleartion (creation) of the imageArray (object) within Product constructor
 Product.imageArray = [];
 
-//these line below intialize new Products, which (populates) the objects with the 
+//these line below intialize new Products, which (populates) the objects with the
 //cont... properties of the Product Constructor function above
 var productOne = new Product('bag' ,'img/assets/bag.jpg');
 var productTwo = new Product ('banana','img/assets/banana.jpg');
@@ -47,33 +47,38 @@ new Product ('wine-glass','img/assets/wine-glass.jpg');
 function generateRandomNumber(){
   var randIndex = Math.floor(Math.random() * Product.imageArray.length);
   return randIndex;
-} 
+}
 
-var firstIndex = generateRandomNumber();
-var secondImgIndex =  generateRandomNumber();
-var thirdImgIndex =  generateRandomNumber();
- 
+
+
 
 function displayingRandomImg() {
-  //this line creates a new var that has the [index number] of image array within the Product
-  productOne = Product.imageArray[firstIndex];
-  // do a test
-  do {
-    //create a var that holds the index location of the 2nd product img
-    
-    // while the first index and second index are the same continue do-ing wthe line above
+
+  do{
+    //the variables below are taking in random generated numbers
+    var firstIndex = generateRandomNumber();
+    var secondImgIndex =  generateRandomNumber();
+    var thirdImgIndex =  2;
+    console.log(firstIndex, secondImgIndex, thirdImgIndex);
+    var whileloop = 0 ;
+    whileloop = whileloop++;
+    console.log(whileloop);
+
+  // the loop makes sure to generate new random numbers for each index until each number is different
   } while (firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
-  // sett the new 
 
-  productTwo = Product.imageArray[secondImgIndex];
-  productThree = Product.imageArray[thirdImgIndex];
+  // // now tha
+  // for(var i = )
+  // productOne = Product.imageArray[firstIndex];
+  // productTwo = Product.imageArray[secondImgIndex];
+  // productThree = Product.imageArray[thirdImgIndex];
 
-  img1.src = productOne.imgPath;
-  img2.src = productTwo.imgPath;
-  img3.src = productThree.imgPath;
- 
+  // img1.src = productOne.imgPath;
+  // img2.src = productTwo.imgPath;
+  // img3.src = productThree.imgPath;
+
   console.log('this ran good');
-  test();
+  // test();
 
 }
 
@@ -88,15 +93,15 @@ var img3 = document.getElementsByTagName('img')[2];
 // }
 
 
-// creating a loop that interates 3 times and compares the current imgs to the previous ones  
-function test() {
-  for(var i = 0; i < 3; i++ ){
-    if (document.getElementsByTagName('img')[i] !== productOne.imgPath) {
-    //displayingRandomImg();
-      console.log('this is working');
-    }
-  }
-}
+// creating a loop that interates 3 times and compares the current imgs to the previous ones
+// function test() {
+//   for(var i = 0; i < 3; i++ ){
+//     if (document.getElementsByTagName('img')[i] !== productOne.imgPath) {
+//     //displayingRandomImg();
+//       console.log('this is working');
+//     }
+//   }
+// }
 
 
 
@@ -120,3 +125,14 @@ img3.addEventListener('click', function() {
   console.log(productThree.imgPath);
   displayingRandomImg();
 });
+
+var whileloop = 0 ;
+
+function whileThisShit(){
+  for (var i = 0; i < 5; i++){
+    whileloop++;
+    console.log(whileloop);
+  }
+}
+
+whileThisShit();
