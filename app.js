@@ -53,72 +53,58 @@ function generateRandomNumber(){
   return randIndex;
 }
 
-
 //puttting the unique random index numbers into an array
 var pastIndex = [];
 
 function displayingRandomImg() {
-  
+
   do{
     //the variables below are taking in random generated numbers
     firstIndex = generateRandomNumber();
     secondImgIndex = generateRandomNumber();
     thirdImgIndex = generateRandomNumber();
     // console.log(newIndex);
-    
+
     //tested the while loop with this console.log
   // the loop makes sure to generate new random numbers for each index until each number is different
   } while (
-    firstIndex === secondImgIndex || 
-    firstIndex === thirdImgIndex || 
+    firstIndex === secondImgIndex ||
+    firstIndex === thirdImgIndex ||
     secondImgIndex === thirdImgIndex ||
     pastIndex.includes(firstIndex) ||
     pastIndex.includes(secondImgIndex) ||
     pastIndex.includes(thirdImgIndex)
   );
   //this is taking in the index numbers that have past through and are next to be displayed. when it r
-  pastIndex = [firstIndex,secondImgIndex,thirdImgIndex]; 
-  // this takes the unique random index array location
-  // and runs it through the comparsion function
-  //has to take in the 
- 
-  // oldAndNewComparision(newIndex[0]);
-  // oldAndNewComparision(newIndex[1]);
-  // oldAndNewComparision(newIndex[2]);
-  
+  pastIndex = [firstIndex,secondImgIndex,thirdImgIndex];
+
   //assigns the generated numbers into the Product variables
   productOne = Product.imageArray[firstIndex];
   productTwo = Product.imageArray[secondImgIndex];
   productThree = Product.imageArray[thirdImgIndex];
-  
+
   // this takes the checked img paths and applies them to the img src -- on the dom.
   img1.src = productOne.imgPath;
-  console.log(img1.src);
+  // console.log(img1.src);
   img2.src = productTwo.imgPath;
-  console.log(img2.src);
+  // console.log(img2.src);
   img3.src = productThree.imgPath;
-  console.log(img3.src);
-
-  console.log('this ran good');
-  // test();
+  // console.log(img3.src);
 }
 
-// function oldAndNewComparision(indexToCompare) {
-//   for (var i = 0; i < 3 ; i++ ) {
-//     var tempindex = indexToCompare;
-//     if (tempindex === productOne.imgPath){
-//       tempindex = generateRandomNumber();
-//       console.log(tempindex);
-//     } else if (tempindex === productTwo.imgPath) {
-//       tempindex = generateRandomNumber();
-//     } else if (tempindex === productThree.imgPath) {
-//       tempindex = generateRandomNumber();
-//     } else {
-//       console.log(tempindex);
-//     }
-//   }
-// }
-
+function listingOutVotes() {
+  var voteItem = document.getElementById('voteList');
+  // console.log(voteItem);
+  for (var i = 0; i < Product.imageArray.length ; i++ ) {
+    var voteItemList = document.createElement('li');
+    // voteCounted = Product.imageArray[i].votes;
+    // console.log(voteItemList);
+    voteItemList.textContent = Product.imageArray[i].votes;// creates a li
+    // console.log(Product.imageArray[i].votes);
+    voteItem.appendChild(voteItemList);
+  }
+  voteItem.appendChild(voteItemList);
+}
 
 // decalaring the index variables that will used to compare index files and then the product locations
 var firstIndex = 0;
@@ -126,45 +112,30 @@ var secondImgIndex =  0;
 var thirdImgIndex =  0;
 
 //need a function that makes sure there are no duplicates. this needs to take in the old imgs and compare them against the newm images ---> this can be done by giving the html location id tags
-
 var img1 = document.getElementsByTagName('img')[0];
 var img2 = document.getElementsByTagName('img')[1];
 var img3 = document.getElementsByTagName('img')[2];
 
-//   while(firstIndex === secondImgIndex || firstIndex === thirdImgIndex || secondImgIndex === thirdImgIndex);
-// }
-
-
-// creating a loop that interates 3 times and compares the current imgs to the previous ones
-// function test() {
-//   for(var i = 0; i < 3; i++ ){
-//     if (document.getElementsByTagName('img')[i] !== productOne.imgPath) {
-//     //displayingRandomImg();
-//       console.log('this is working');
-//     }
-//   }
-// }
-
-
-
+// function twentyFiveVotes(){
 img1.addEventListener('click', function() {
   productOne.votes++;
-  console.log(productOne.votes);
-  console.log(productOne.imgPath);
+  // console.log(productOne.votes);
+  // console.log(productOne.imgPath);
   displayingRandomImg();
 });
 
 img2.addEventListener('click', function() {
   productTwo.votes++;
-  console.log(productTwo.votes);
-  console.log(productTwo.imgPath);
+  // console.log(productTwo.votes);
+  // console.log(productTwo.imgPath);
   displayingRandomImg();
 });
 
 img3.addEventListener('click', function() {
   productThree.votes++;
-  console.log(productThree.votes);
-  console.log(productThree.imgPath);
+  // console.log(productThree.votes);
+  // console.log(productThree.imgPath);
   displayingRandomImg();
 });
-
+//   listingOutVotes();
+// }
