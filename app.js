@@ -75,7 +75,7 @@ function displayingRandomImg() {
     pastIndex.includes(secondImgIndex) ||
     pastIndex.includes(thirdImgIndex)
   );
-  //this is taking in the index numbers that have past through and are next to be displayed. when it r
+  //this is taking in the index numbers that have past through and are next to be displayed.
   pastIndex = [firstIndex,secondImgIndex,thirdImgIndex];
 
   //assigns the generated numbers into the Product variables
@@ -85,11 +85,17 @@ function displayingRandomImg() {
 
   // this takes the checked img paths and applies them to the img src -- on the dom.
   img1.src = productOne.imgPath;
-  // console.log(img1.src);
+  productOne.display++;
+  console.log('the number of ' + productOne.name + ' displays is ' + productOne.display + ' . ');
+
   img2.src = productTwo.imgPath;
-  // console.log(img2.src);
+  productTwo.display++;
+  console.log('the number of ' + productTwo.name + ' displays is ' + productTwo.display + ' . ');
+
   img3.src = productThree.imgPath;
-  // console.log(img3.src);
+  productThree.display++;
+  console.log('the number of ' + productThree.name + ' displays is ' + productThree.display + ' . ');
+
   console.log('this is ' + totalVotes + ' total votes');
 }
 
