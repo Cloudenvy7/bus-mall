@@ -90,21 +90,26 @@ function displayingRandomImg() {
   // console.log(img2.src);
   img3.src = productThree.imgPath;
   // console.log(img3.src);
+  console.log('this is ' + totalVotes + ' total votes');
 }
 
+var voteItemList = [];
+
 function listingOutVotes() {
-  var voteItem = document.getElementById('voteList');
   // console.log(voteItem);
+
+  var voteItem = document.getElementById('voteList');
   for (var i = 0; i < Product.imageArray.length ; i++ ) {
-    var voteItemList = document.createElement('li');
+    voteItemList = document.createElement('li');
     // voteCounted = Product.imageArray[i].votes;
     // console.log(voteItemList);
     voteItemList.textContent = Product.imageArray[i].votes;// creates a li
     // console.log(Product.imageArray[i].votes);
     voteItem.appendChild(voteItemList);
   }
-  voteItem.appendChild(voteItemList);
 }
+
+
 
 // decalaring the index variables that will used to compare index files and then the product locations
 var firstIndex = 0;
@@ -117,25 +122,45 @@ var img2 = document.getElementsByTagName('img')[1];
 var img3 = document.getElementsByTagName('img')[2];
 
 // function twentyFiveVotes(){
+
+//creating a function that will take recongize when a image is
+//clicked and take the image click and add click to that item
+// after 25 clicks the function/loop will end.
+//afterwards the votes for each img will be displayed in a list beside the
+var totalVotes = 0;
+
 img1.addEventListener('click', function() {
   productOne.votes++;
   // console.log(productOne.votes);
   // console.log(productOne.imgPath);
-  displayingRandomImg();
+  totalVotes++;
+  untilTwentyFiveVotes();
+
 });
 
 img2.addEventListener('click', function() {
   productTwo.votes++;
   // console.log(productTwo.votes);
   // console.log(productTwo.imgPath);
-  displayingRandomImg();
-});
+  totalVotes++;
+  untilTwentyFiveVotes();
 
+});
 img3.addEventListener('click', function() {
   productThree.votes++;
   // console.log(productThree.votes);
   // console.log(productThree.imgPath);
-  displayingRandomImg();
+  totalVotes++;
+  untilTwentyFiveVotes();
 });
-//   listingOutVotes();
-// }
+
+
+function untilTwentyFiveVotes(){
+  if (totalVotes < 25){
+    displayingRandomImg();
+  } else {
+    document.getElementById('imageContainer').style.display = 'none';  
+    listingOutVotes();
+  }
+}
+
