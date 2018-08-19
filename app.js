@@ -107,10 +107,14 @@ function listingOutVotes() {
   var voteItem = document.getElementById('voteList');
   for (var i = 0; i < Product.imageArray.length ; i++ ) {
     voteItemList = document.createElement('li');
+    var itemImg = document.createElement('img');
     // voteCounted = Product.imageArray[i].votes;
     // console.log(voteItemList);
     voteItemList.textContent = Product.imageArray[i].votes;// creates a li
+    itemImg.src = Product.imageArray[i].imgPath;// creates a li
+    
     // console.log(Product.imageArray[i].votes);
+    voteItem.appendChild(itemImg);
     voteItem.appendChild(voteItemList);
   }
 }
