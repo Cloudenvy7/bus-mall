@@ -3,3 +3,14 @@ img {
   height: 30%;
   align-content: center;
 }
+
+.votePanel{
+  width: 20%;
+  display: inline-block;
+}
+
+.imageContainer{
+  width: 50%;
+  width: 75%;
+  display: inline-block;
+}
